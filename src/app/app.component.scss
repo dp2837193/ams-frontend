@@ -1,0 +1,28 @@
+.my-header {
+    background: lightgrey;
+    padding-top: 1%;
+    padding-left: 2%;
+    padding-bottom: 1%;
+    padding-right: 2%;
+}
+
+.my-header .title span {
+    font-size: 24px;
+    font-weight: bold;
+    color: brown;
+}
+
+.my-header svg {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.my-header .user{
+    text-align: right;
+}
+
+.my-header .user span{
+    text-align: right;
+    font-size: 17px;
+    font-weight: lighter;
+}

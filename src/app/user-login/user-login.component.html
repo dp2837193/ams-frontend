@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row inp">
+        <h1 align="center">Login</h1>
+    </div>
+    <div class="login">
+        <div class="card">
+            <div class="row">
+                <div class="col inp">
+                    <input [(ngModel)]="email" class="form-control" type="text" placeholder="Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col inp">
+                    <input [(ngModel)]="password" class="form-control" type="password" placeholder="Password">
+                </div>
+            </div>
+            <div *ngIf="showMessage" class="error-handling">
+                <div *ngIf="loginSuccess" class="success">
+                    <span>Login succedded!</span>
+                </div>
+                <div *ngIf="!loginSuccess" class="failure">
+                    <span>Login failed, invalid username or password</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div>
+                            <button (click)="loginUser()" class="btn btn-primary" type="submit" [disabled]="disableLogin()">Login</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-message">
+                <p>New user? <u class="mouse" (click)="openRegistration()">click here</u> to sign up</p>
+            </div>
+        </div>
+    </div>
+</div>

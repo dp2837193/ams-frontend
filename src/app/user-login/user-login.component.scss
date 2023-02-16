@@ -1,0 +1,32 @@
+input{
+    padding: 0.5%;
+}
+
+.inp{
+    padding: 1%;
+}
+
+.mouse{
+    cursor: pointer;
+}
+
+.login{
+    padding-left: 30%;
+    padding-right: 30%;
+}
+
+.login .card{
+    padding: 5%;
+}
+
+.login-message{
+    text-align: center;
+}
+
+.error-handling .success span{
+    color: green;
+}
+
+.error-handling .failure span{
+    color: red;
+}

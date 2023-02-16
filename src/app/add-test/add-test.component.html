@@ -1,0 +1,137 @@
+<div class="container">
+    <div class="container">
+        <div>
+            <h1 align="center" style="padding-top: 2%;">Create Test</h1>
+        </div>
+    </div>
+    <div class="details-section">
+        <h2>Test Details</h2>
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <div class="row my-row">
+                        <div class="col">
+                            <p class="label">Title</p>
+                        </div>
+                        <div class="col">
+                            <input [(ngModel)]="test.title" type="text" [disabled]="isTestCreated">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row my-row">
+                        <div class="col">
+                            <p class="label">Subject</p>
+                        </div>
+                        <div class="col">
+                            <select [(ngModel)]="test.subject" name="subject" [disabled]="isTestCreated">
+                                <option value="maths">Maths</option>
+                                <option value="physics">Physics</option>
+                                <option value="chemistry">Chemistry</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row my-row">
+                        <div class="col">
+                            <p class="label">Class</p>
+                        </div>
+                        <div class="col">
+                            <input [(ngModel)]="test.targetedClass" type="text" [disabled]="isTestCreated">
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row my-row">
+                        <div class="col">
+                            <p class="label">Difficulty Level</p>
+                        </div>
+                        <div class="col">
+                            <select [(ngModel)]="test.difficultyLevel" name="difficulty-level" [disabled]="isTestCreated">
+                                <option value="easy">Easy</option>
+                                <option value="medium">Medium</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="isTestCreated" class="question-section">
+        <h2>Add Questions</h2>
+        <div class="row question-card" *ngFor="let ques of testQuestions; index as i">
+            <div class="col-md-1 question-index">
+                {{i+1}}.
+            </div>
+            <div class="col-md-10">
+                <div class="card">
+                    <div class="row my-row">
+                        <div class="col-md-2">
+                            <p class="label">Question</p>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea [(ngModel)]="ques.question"></textarea>
+                        </div>
+                    </div>
+                    <div class="row my-row">
+                        <div class="col-md-2">
+                            <p class="label">Question type</p>
+                        </div>
+                        <div class="col-md-10">
+                            <select [(ngModel)]="ques.type" name="question-type" (change)="changeQuestionType(i)">
+                                <option value="subjective">Subjective</option>
+                                <option value="objective">Objective</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div *ngIf="ques.type=='objective'" class="row my-row question-options">
+                        <div class="col-md-2">
+                            <p class="label">Options</p>
+                        </div>
+                        <div class="col-md-10">
+                            <div class="row my-row" *ngFor="let op of ques.options; index as j">
+                                <div class="col-md-2">
+                                    Option {{j+1}}
+                                </div>
+                                <div class="col-md-10">
+                                    <input [(ngModel)]="op.option" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1 question-action">
+                <svg style="cursor: pointer;" *ngIf="i!=testQuestions.length-1" (click)="deleteQuestion(i)" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+                    <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+                  </svg>
+                <svg style="cursor: pointer;" *ngIf="i==testQuestions.length-1" (click)="addQuestion(i)" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-action">
+        <div class="row">
+            
+            <div *ngIf="!isTestCreated" class="col-md-5 left-action">
+                <button class="btn btn-primary" (click)="createTest()" [disabled]="disableCreateTest()">Create</button>
+            </div>
+            <div *ngIf="!isTestCreated" class="col-md-2"></div>
+            <div *ngIf="!isTestCreated" class="col-md-5 right-action">
+                <button class="btn btn-secondary" (click)="cancel()">Cancel</button>
+            </div>
+
+            <div *ngIf="isTestCreated" class="action">
+                <button (click)="completeTest()" class="btn btn-primary">Finish</button>
+            </div>
+
+        </div>
+    </div>
+</div>

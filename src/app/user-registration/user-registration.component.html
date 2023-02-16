@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row inp">
+        <h1 align="center">Registration</h1>
+    </div>
+    <div class="register">
+        <div class="card">
+            <div class="row">
+                <div class="col inp">
+                    <input class="form-control" type="text" placeholder="First name" [(ngModel)]="newUser.firstName">
+                </div>
+                <div class="col inp">
+                    <input class="form-control" type="text" placeholder="Last name" [(ngModel)]="newUser.lastName">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col inp">
+                    <input class="form-control" type="text" placeholder="Email" [(ngModel)]="newUser.email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col inp">
+                    <input class="form-control" type="password" placeholder="Password" [(ngModel)]="newUser.password">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col inp">
+                    <input class="form-control" type="password" placeholder="Confirm Password">
+                </div>
+            </div>
+            <div *ngIf="showMessage" class="error-handling">
+                <div *ngIf="registrationSuccess" class="success">
+                    <span>Registration successful!</span>
+                </div>
+                <div *ngIf="!registrationSuccess" class="failure">
+                    <span>{{registrationFailureMsg}}</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <button (click)="registerUser()" class="btn btn-primary" type="submit">Register</button>
+                        </div>
+                        <div class="col-sm-2">
+                            <button class="btn btn-secondary">Reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-message">
+                <p>Already have an account? <u class="mouse" (click)="openLogin()">click here</u> to login</p>
+            </div>
+        </div>
+    </div>
+</div>
