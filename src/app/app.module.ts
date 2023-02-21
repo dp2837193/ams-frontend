@@ -32,6 +32,7 @@ import { SpinnerViewComponent } from './spinner-view/spinner-view.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
 import { SpinnerService } from './spinner.service';
+import { SampleComComponent } from './sample-com/sample-com.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { SpinnerService } from './spinner.service';
     AddTestComponent,
     BrowseTestsComponent,
     ModifyTestComponent,
-    SpinnerViewComponent
+    SpinnerViewComponent,
+    SampleComComponent
   ],
   imports: [
     BrowserModule,
